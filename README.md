@@ -1,2 +1,0 @@
-# youth-ministry-hub
-

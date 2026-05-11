@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: General Sans;
+    --font-body: Lora;
+    --font-mono: monospace;
+    --radius: 0.625rem;
+
+    --background: 0.98 0.01 0;
+    --foreground: 0.15 0.01 0;
+    --card: 1.0 0.01 0;
+    --card-foreground: 0.15 0.01 0;
+    --popover: 1.0 0.01 0;
+    --popover-foreground: 0.15 0.01 0;
+
+    --primary: 0.38 0.18 254;
+    --primary-foreground: 0.98 0.01 0;
+
+    --secondary: 0.75 0.14 54;
+    --secondary-foreground: 0.15 0.01 0;
+    --muted: 0.92 0.01 0;
+    --muted-foreground: 0.5 0.01 0;
+
+    --accent: 0.65 0.2 54;
+    --accent-foreground: 0.98 0.01 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.88 0.01 0;
+    --input: 0.92 0.01 0;
+    --ring: 0.38 0.18 254;
+
+    --chart-1: 0.65 0.22 40;
+    --chart-2: 0.6 0.12 185;
+    --chart-3: 0.4 0.07 227;
+    --chart-4: 0.83 0.19 84;
+    --chart-5: 0.77 0.19 70;
+
+    --sidebar: 0.98 0.01 0;
+    --sidebar-foreground: 0.15 0.01 0;
+    --sidebar-primary: 0.38 0.18 254;
+    --sidebar-primary-foreground: 0.98 0.01 0;
+    --sidebar-accent: 0.75 0.14 54;
+    --sidebar-accent-foreground: 0.15 0.01 0;
+    --sidebar-border: 0.88 0.01 0;
+    --sidebar-ring: 0.38 0.18 254;
+  }
+
+  .dark {
+    --background: 0.1 0.01 0;
+    --foreground: 0.96 0.01 0;
+    --card: 0.15 0.01 0;
+    --card-foreground: 0.96 0.01 0;
+    --popover: 0.2 0.01 0;
+    --popover-foreground: 0.96 0.01 0;
+
+    --primary: 0.72 0.18 254;
+    --primary-foreground: 0.1 0.01 0;
+
+    --secondary: 0.75 0.14 54;
+    --secondary-foreground: 0.96 0.01 0;
+    --muted: 0.25 0.01 0;
+    --muted-foreground: 0.6 0.01 0;
+
+    --accent: 0.75 0.18 54;
+    --accent-foreground: 0.1 0.01 0;
+
+    --destructive: 0.65 0.19 22;
+    --destructive-foreground: 0.1 0.01 0;
+
+    --border: 0.25 0.01 0;
+    --input: 0.2 0.01 0;
+    --ring: 0.72 0.18 254;
+
+    --chart-1: 0.75 0.18 54;
+    --chart-2: 0.72 0.18 254;
+    --chart-3: 0.68 0.16 40;
+    --chart-4: 0.8 0.17 70;
+    --chart-5: 0.7 0.15 40;
+
+    --sidebar: 0.15 0.01 0;
+    --sidebar-foreground: 0.96 0.01 0;
+    --sidebar-primary: 0.72 0.18 254;
+    --sidebar-primary-foreground: 0.1 0.01 0;
+    --sidebar-accent: 0.75 0.14 54;
+    --sidebar-accent-foreground: 0.96 0.01 0;
+    --sidebar-border: 0.25 0.01 0;
+    --sidebar-ring: 0.72 0.18 254;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @font-face {
+    font-family: "General Sans";
+    src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Lora";
+    src: url("/assets/fonts/Lora.woff2") format("woff2");
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  .transition-fade {
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .transition-lift {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .shadow-elevated {
+    box-shadow: 0 20px 25px -5px oklch(var(--foreground) / 0.08);
+  }
+  .shadow-subtle {
+    box-shadow: 0 4px 6px -1px oklch(var(--foreground) / 0.04);
+  }
+}
+
+/* React Quill dark mode overrides */
+.quill-dark-wrap .ql-toolbar {
+  background: hsl(var(--muted) / 0.5);
+  border-color: hsl(var(--border));
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.quill-dark-wrap .ql-container {
+  background: hsl(var(--background));
+  border-color: hsl(var(--border));
+  border-radius: 0 0 var(--radius) var(--radius);
+  color: hsl(var(--foreground));
+  font-family: var(--font-body), serif;
+  min-height: 120px;
+}
+.quill-dark-wrap .ql-editor {
+  min-height: 120px;
+}
+.quill-dark-wrap .ql-toolbar .ql-stroke {
+  stroke: hsl(var(--foreground) / 0.7);
+}
+.quill-dark-wrap .ql-toolbar .ql-fill {
+  fill: hsl(var(--foreground) / 0.7);
+}
+.quill-dark-wrap .ql-toolbar button:hover .ql-stroke,
+.quill-dark-wrap .ql-toolbar button.ql-active .ql-stroke {
+  stroke: hsl(var(--primary));
+}
+.quill-dark-wrap .ql-toolbar .ql-picker-label {
+  color: hsl(var(--foreground) / 0.7);
+}
+.quill-dark-wrap .ql-toolbar .ql-picker-options {
+  background: hsl(var(--popover));
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
+}

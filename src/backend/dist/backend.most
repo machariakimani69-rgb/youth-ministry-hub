@@ -1,0 +1,320 @@
+// Version: 1.0.0
+type Announcement__339718872 =
+  {
+    content : Text;
+    createdAt : Timestamp__301639476;
+    createdBy : UserId__158757552;
+    expireAt : ?Timestamp__301639476;
+    id : ResourceId__712276042;
+    isPinned : Bool;
+    publishAt : Timestamp__301639476;
+    title : Text
+  };
+type BlogPost__240102757 =
+  {
+    author : UserId__158757552;
+    content : Text;
+    createdAt : Timestamp__301639476;
+    featuredImageBlob : ?ExternalBlob__671167343;
+    id : ResourceId__712276042;
+    isPublished : Bool;
+    title : Text;
+    updatedAt : Timestamp__301639476
+  };
+type ContactMessage__89304069 =
+  {
+    createdAt : Timestamp__301639476;
+    email : Text;
+    id : ResourceId__712276042;
+    isRead : Bool;
+    message : Text;
+    name : Text;
+    subject : Text
+  };
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Devotional__1036012218 =
+  {
+    createdAt : Timestamp__301639476;
+    createdBy : UserId__158757552;
+    date : Timestamp__301639476;
+    id : ResourceId__712276042;
+    reflection : Text;
+    scripture : Text;
+    title : Text
+  };
+type Donation__677181599 =
+  {
+    amountCents : Nat;
+    createdAt : Timestamp__301639476;
+    currency : Text;
+    donorEmail : Text;
+    donorId : ?UserId__158757552;
+    donorName : Text;
+    id : ResourceId__712276042;
+    message : ?Text;
+    stripeSessionId : ?Text
+  };
+type Event__543096582 =
+  {
+    capacity : ?Nat;
+    createdAt : Timestamp__301639476;
+    createdBy : UserId__158757552;
+    description : Text;
+    endDate : Timestamp__301639476;
+    id : ResourceId__712276042;
+    imageUrl : ?Text;
+    isPublished : Bool;
+    location : Text;
+    startDate : Timestamp__301639476;
+    title : Text
+  };
+type ExternalBlob__671167343 = Blob;
+type GalleryAlbum__734738613 =
+  {
+    category : Text;
+    coverImageBlob : ?ExternalBlob__671167343;
+    createdAt : Timestamp__301639476;
+    createdBy : UserId__158757552;
+    description : ?Text;
+    id : ResourceId__712276042;
+    title : Text
+  };
+type GalleryImage__104908223 =
+  {
+    albumId : ResourceId__712276042;
+    blob : ExternalBlob__671167343;
+    caption : ?Text;
+    id : ResourceId__712276042;
+    uploadedAt : Timestamp__301639476;
+    uploadedBy : UserId__158757552
+  };
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type LeadershipMember__682008472 =
+  {
+    bio : Text;
+    displayOrder : Nat;
+    id : ResourceId__712276042;
+    isActive : Bool;
+    name : Text;
+    photoBlob : ?ExternalBlob__671167343;
+    title : Text
+  };
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type MediaFile__251047126 =
+  {
+    blob : ExternalBlob__671167343;
+    category : Text;
+    description : ?Text;
+    fileName : Text;
+    id : ResourceId__712276042;
+    mediaType : MediaType__615890410;
+    uploadedAt : Timestamp__301639476;
+    uploadedBy : UserId__158757552
+  };
+type MediaType__615890410 = {#audio; #image; #pdf; #video};
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewsletterSubscriber__845141879 =
+  {email : Text; isActive : Bool; subscribedAt : Timestamp__301639476};
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type PageView__508186946 =
+  {page : Text; userId : ?UserId__158757552; viewedAt : Timestamp__301639476};
+type PrayerPrivacy__528005057 = {#membersOnly; #private_; #public_};
+type PrayerRequest__706390589 =
+  {
+    content : Text;
+    createdAt : Timestamp__301639476;
+    id : ResourceId__712276042;
+    privacy : PrayerPrivacy__528005057;
+    status : PrayerStatus__919084455;
+    submitterId : ?UserId__158757552;
+    submitterName : Text
+  };
+type PrayerStatus__919084455 = {#active; #answered};
+type RegistrationStatus__706687200 = {#approved; #pending; #rejected};
+type ResourceId__712276042 = Nat;
+type RsvpStatus__958288607 = {#going; #maybe; #notGoing};
+type Rsvp__987884351 =
+  {
+    registeredAt : Timestamp__301639476;
+    status : RsvpStatus__958288607;
+    userId : UserId__158757552
+  };
+type Sermon__495438695 =
+  {
+    audioBlob : ?ExternalBlob__671167343;
+    createdAt : Timestamp__301639476;
+    createdBy : UserId__158757552;
+    date : Timestamp__301639476;
+    description : Text;
+    id : ResourceId__712276042;
+    isPublished : Bool;
+    scriptureReference : Text;
+    speaker : Text;
+    thumbnailBlob : ?ExternalBlob__671167343;
+    title : Text;
+    videoBlob : ?ExternalBlob__671167343
+  };
+type SocialLinks__597770396 =
+  {
+    facebook : ?Text;
+    instagram : ?Text;
+    twitter : ?Text;
+    whatsapp : ?Text;
+    youtube : ?Text
+  };
+type StripeConfig__1056346096 = {allowedCountries : [Text]; secretKey : Text};
+type SystemSettings__109090105 =
+  {
+    aboutUs : Text;
+    address : ?Text;
+    churchName : Text;
+    contactEmail : Text;
+    contactPhone : ?Text;
+    logoUrl : ?Text;
+    primaryColor : Text;
+    socialLinks : SocialLinks__597770396;
+    welcomeMessage : Text
+  };
+type Testimonial__428069909 =
+  {
+    authorId : ?UserId__158757552;
+    authorName : Text;
+    content : Text;
+    createdAt : Timestamp__301639476;
+    id : ResourceId__712276042;
+    isApproved : Bool;
+    isFeatured : Bool;
+    photoBlob : ?ExternalBlob__671167343
+  };
+type Timestamp__301639476 = Int;
+type UserId__158757552 = Principal;
+type UserProfile__277265826 =
+  {
+    email : Text;
+    id : UserId__158757552;
+    joinedAt : Timestamp__301639476;
+    name : Text;
+    phone : ?Text;
+    photoUrl : ?Text;
+    registrationStatus : RegistrationStatus__706687200;
+    role : UserRole__41952412
+  };
+type UserRole__1073662873 = {#admin; #guest; #user};
+type UserRole__41952412 = {#admin; #guest; #leader; #member};
+actor {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__605269027<Principal, UserRole__1073662873>
+    };
+  stable albums :
+    {
+      var root :
+        Node__46230540<ResourceId__712276042, GalleryAlbum__734738613>;
+      var size : Nat__490723111
+    };
+  stable announcements :
+    {
+      var root :
+        Node__46230540<ResourceId__712276042, Announcement__339718872>;
+      var size : Nat__490723111
+    };
+  stable communityIdCounter : {var nextCommunityId : Nat};
+  stable contacts :
+    {
+      var root :
+        Node__46230540<ResourceId__712276042, ContactMessage__89304069>;
+      var size : Nat__490723111
+    };
+  stable contentIdCounter : {var nextContentId : Nat};
+  stable devotionals :
+    {
+      var root : Node__46230540<ResourceId__712276042, Devotional__1036012218>;
+      var size : Nat__490723111
+    };
+  stable donationIdCounter : {var nextDonationId : Nat};
+  stable donations :
+    {
+      var root : Node__46230540<ResourceId__712276042, Donation__677181599>;
+      var size : Nat__490723111
+    };
+  stable eventIdCounter : {var nextEventId : Nat};
+  stable events :
+    {
+      var root : Node__46230540<ResourceId__712276042, Event__543096582>;
+      var size : Nat__490723111
+    };
+  stable galleryImages :
+    {
+      var root :
+        Node__46230540<ResourceId__712276042, GalleryImage__104908223>;
+      var size : Nat__490723111
+    };
+  stable leadership :
+    {
+      var root :
+        Node__46230540<ResourceId__712276042, LeadershipMember__682008472>;
+      var size : Nat__490723111
+    };
+  stable mediaFiles :
+    {
+      var root : Node__46230540<ResourceId__712276042, MediaFile__251047126>;
+      var size : Nat__490723111
+    };
+  stable mediaIdCounter : {var nextMediaId : Nat};
+  stable pageViews :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?PageView__508186946]];
+      var elementIndex : Nat__490723111
+    };
+  stable posts :
+    {
+      var root : Node__46230540<ResourceId__712276042, BlogPost__240102757>;
+      var size : Nat__490723111
+    };
+  stable prayers :
+    {
+      var root :
+        Node__46230540<ResourceId__712276042, PrayerRequest__706390589>;
+      var size : Nat__490723111
+    };
+  stable profiles :
+    {
+      var root : Node__46230540<UserId__158757552, UserProfile__277265826>;
+      var size : Nat__490723111
+    };
+  stable rsvps :
+    {
+      var root :
+        Node__46230540<ResourceId__712276042,
+                        Map__605269027<UserId__158757552, Rsvp__987884351>>;
+      var size : Nat__490723111
+    };
+  stable sermons :
+    {
+      var root : Node__46230540<ResourceId__712276042, Sermon__495438695>;
+      var size : Nat__490723111
+    };
+  stable settingsStore : {var data : SystemSettings__109090105};
+  stable stripeConfigStore : {var data : ?StripeConfig__1056346096};
+  stable subscribers :
+    {
+      var root : Node__46230540<Text, NewsletterSubscriber__845141879>;
+      var size : Nat__490723111
+    };
+  stable testimonials :
+    {
+      var root : Node__46230540<ResourceId__712276042, Testimonial__428069909>;
+      var size : Nat__490723111
+    };
+  stable userIdCounter : {var nextUserId : Nat}
+};

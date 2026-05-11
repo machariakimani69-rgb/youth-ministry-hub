@@ -1,0 +1,31 @@
+{
+  "overview": "A professional, full-featured church youth ministry website with animated homepage, member portal, admin dashboard, event booking, media library, sermons, blog, gallery, prayer requests, testimonials, and online donations — built for youth engagement and community growth.",
+  "features": [
+    "Animated homepage with church branding, scripture, announcements, and upcoming events",
+    "Member registration/login with role-based access (Admin, Leader, Member)",
+    "Admin dashboard for managing events, content, users, donations, and analytics",
+    "Media library with video, audio, PDF, and image upload/download via cloud storage",
+    "Events system with RSVP booking and attendee management",
+    "Sermons, Devotionals, and Blog sections with rich text editor",
+    "Gallery with organized albums and lightbox view",
+    "Prayer requests submission and tracking",
+    "Testimonials and About Us/Leadership Team pages",
+    "Online donations via Stripe with receipt emails",
+    "Newsletter signup and email notifications",
+    "Contact page with form, social media links, and WhatsApp support"
+  ],
+  "category": "community",
+  "tags": [
+    "church",
+    "youth",
+    "ministry",
+    "community",
+    "events",
+    "sermons",
+    "donations",
+    "admin-dashboard",
+    "media-library",
+    "responsive"
+  ],
+  "last_updated": "2026-05-11T04:21:04.461Z"
+}

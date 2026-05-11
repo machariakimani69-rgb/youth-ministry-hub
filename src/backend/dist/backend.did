@@ -1,0 +1,421 @@
+type http_request_result = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type http_header = 
+ record {
+   name: text;
+   value: text;
+ };
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type UserRole__1 = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   leader;
+   member;
+ };
+type UserProfile = 
+ record {
+   email: text;
+   id: UserId;
+   joinedAt: Timestamp;
+   name: text;
+   phone: opt text;
+   photoUrl: opt text;
+   registrationStatus: RegistrationStatus;
+   role: UserRole;
+ };
+type UserId = principal;
+type TransformationOutput = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type TransformationInput = 
+ record {
+   context: blob;
+   response: http_request_result;
+ };
+type Timestamp = int;
+type Testimonial = 
+ record {
+   authorId: opt UserId;
+   authorName: text;
+   content: text;
+   createdAt: Timestamp;
+   id: ResourceId;
+   isApproved: bool;
+   isFeatured: bool;
+   photoBlob: opt ExternalBlob;
+ };
+type SystemSettings = 
+ record {
+   aboutUs: text;
+   address: opt text;
+   churchName: text;
+   contactEmail: text;
+   contactPhone: opt text;
+   logoUrl: opt text;
+   primaryColor: text;
+   socialLinks: SocialLinks;
+   welcomeMessage: text;
+ };
+type StripeSessionStatus = 
+ variant {
+   completed: record {
+                response: text;
+                userPrincipal: opt text;
+              };
+   failed: record {error: text;};
+ };
+type StripeConfiguration = 
+ record {
+   allowedCountries: vec text;
+   secretKey: text;
+ };
+type SocialLinks = 
+ record {
+   facebook: opt text;
+   instagram: opt text;
+   twitter: opt text;
+   whatsapp: opt text;
+   youtube: opt text;
+ };
+type ShoppingItem = 
+ record {
+   currency: text;
+   priceInCents: nat;
+   productDescription: text;
+   productName: text;
+   quantity: nat;
+ };
+type Sermon = 
+ record {
+   audioBlob: opt ExternalBlob;
+   createdAt: Timestamp;
+   createdBy: UserId;
+   date: Timestamp;
+   description: text;
+   id: ResourceId;
+   isPublished: bool;
+   scriptureReference: text;
+   speaker: text;
+   thumbnailBlob: opt ExternalBlob;
+   title: text;
+   videoBlob: opt ExternalBlob;
+ };
+type RsvpStatus = 
+ variant {
+   going;
+   maybe;
+   notGoing;
+ };
+type Rsvp = 
+ record {
+   registeredAt: Timestamp;
+   status: RsvpStatus;
+   userId: UserId;
+ };
+type ResourceId = nat;
+type RegistrationStatus = 
+ variant {
+   approved;
+   pending;
+   rejected;
+ };
+type PrayerStatus = 
+ variant {
+   active;
+   answered;
+ };
+type PrayerRequest = 
+ record {
+   content: text;
+   createdAt: Timestamp;
+   id: ResourceId;
+   privacy: PrayerPrivacy;
+   status: PrayerStatus;
+   submitterId: opt UserId;
+   submitterName: text;
+ };
+type PrayerPrivacy = 
+ variant {
+   membersOnly;
+   private;
+   public;
+ };
+type NewsletterSubscriber = 
+ record {
+   email: text;
+   isActive: bool;
+   subscribedAt: Timestamp;
+ };
+type MediaType = 
+ variant {
+   audio;
+   image;
+   pdf;
+   video;
+ };
+type MediaFile = 
+ record {
+   "blob": ExternalBlob;
+   category: text;
+   description: opt text;
+   fileName: text;
+   id: ResourceId;
+   mediaType: MediaType;
+   uploadedAt: Timestamp;
+   uploadedBy: UserId;
+ };
+type LeadershipMember = 
+ record {
+   bio: text;
+   displayOrder: nat;
+   id: ResourceId;
+   isActive: bool;
+   name: text;
+   photoBlob: opt ExternalBlob;
+   title: text;
+ };
+type GalleryImage = 
+ record {
+   albumId: ResourceId;
+   "blob": ExternalBlob;
+   caption: opt text;
+   id: ResourceId;
+   uploadedAt: Timestamp;
+   uploadedBy: UserId;
+ };
+type GalleryAlbum = 
+ record {
+   category: text;
+   coverImageBlob: opt ExternalBlob;
+   createdAt: Timestamp;
+   createdBy: UserId;
+   description: opt text;
+   id: ResourceId;
+   title: text;
+ };
+type ExternalBlob = blob;
+type EventWithRsvps = 
+ record {
+   event: Event;
+   rsvps: vec Rsvp;
+ };
+type Event = 
+ record {
+   capacity: opt nat;
+   createdAt: Timestamp;
+   createdBy: UserId;
+   description: text;
+   endDate: Timestamp;
+   id: ResourceId;
+   imageUrl: opt text;
+   isPublished: bool;
+   location: text;
+   startDate: Timestamp;
+   title: text;
+ };
+type Donation = 
+ record {
+   amountCents: nat;
+   createdAt: Timestamp;
+   currency: text;
+   donorEmail: text;
+   donorId: opt UserId;
+   donorName: text;
+   id: ResourceId;
+   message: opt text;
+   stripeSessionId: opt text;
+ };
+type Devotional = 
+ record {
+   createdAt: Timestamp;
+   createdBy: UserId;
+   date: Timestamp;
+   id: ResourceId;
+   reflection: text;
+   scripture: text;
+   title: text;
+ };
+type ContactMessage = 
+ record {
+   createdAt: Timestamp;
+   email: text;
+   id: ResourceId;
+   isRead: bool;
+   message: text;
+   name: text;
+   subject: text;
+ };
+type BlogPost = 
+ record {
+   author: UserId;
+   content: text;
+   createdAt: Timestamp;
+   featuredImageBlob: opt ExternalBlob;
+   id: ResourceId;
+   isPublished: bool;
+   title: text;
+   updatedAt: Timestamp;
+ };
+type Announcement = 
+ record {
+   content: text;
+   createdAt: Timestamp;
+   createdBy: UserId;
+   expireAt: opt Timestamp;
+   id: ResourceId;
+   isPinned: bool;
+   publishAt: Timestamp;
+   title: text;
+ };
+type AnalyticsSummary = 
+ record {
+   totalDonationAmountCents: nat;
+   totalDonations: nat;
+   totalEvents: nat;
+   totalMembers: nat;
+   totalPageViews: nat;
+   totalUsers: nat;
+ };
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  _initializeAccessControl: () -> ();
+  addAnnouncement: (title: text, content: text, isPinned: bool, publishAt:
+   Timestamp, expireAt: opt Timestamp) -> (Announcement);
+  addBlogPost: (title: text, content: text, featuredImageBlob:
+   opt ExternalBlob, isPublished: bool) -> (BlogPost);
+  addDevotional: (title: text, scripture: text, reflection: text, date:
+   Timestamp) -> (Devotional);
+  addGalleryImage: (albumId: ResourceId, "blob": ExternalBlob, caption:
+   opt text) -> (GalleryImage);
+  addLeader: (name: text, title: text, bio: text, photoBlob:
+   opt ExternalBlob, displayOrder: nat) -> (LeadershipMember);
+  addSermon: (title: text, speaker: text, date: Timestamp, description: 
+   text, scriptureReference: text, audioBlob: opt ExternalBlob, videoBlob:
+   opt ExternalBlob, thumbnailBlob: opt ExternalBlob) -> (Sermon);
+  approveTestimonial: (id: ResourceId, isFeatured: bool) -> ();
+  approveUser: (userId: UserId) -> ();
+  assignCallerUserRole: (user: principal, role: UserRole__1) -> ();
+  assignUserRole: (userId: UserId, role: UserRole) -> ();
+  createAlbum: (title: text, description: opt text, category: text,
+   coverImageBlob: opt ExternalBlob) -> (GalleryAlbum);
+  createCheckoutSession: (items: vec ShoppingItem, successUrl: text,
+   cancelUrl: text) -> (text);
+  createDonationCheckout: (donorName: text, donorEmail: text, amountCents:
+   nat, currency: text, message: opt text, successUrl: text, cancelUrl:
+   text) -> (text);
+  createEvent: (title: text, description: text, location: text, startDate:
+   Timestamp, endDate: Timestamp, capacity: opt nat, imageUrl: opt text) ->
+   (Event);
+  deleteAlbum: (albumId: ResourceId) -> ();
+  deleteAnnouncement: (id: ResourceId) -> ();
+  deleteBlogPost: (id: ResourceId) -> ();
+  deleteDevotional: (id: ResourceId) -> ();
+  deleteEvent: (id: ResourceId) -> ();
+  deleteGalleryImage: (id: ResourceId) -> ();
+  deleteLeader: (id: ResourceId) -> ();
+  deleteMedia: (id: ResourceId) -> ();
+  deleteSermon: (id: ResourceId) -> ();
+  deleteTestimonial: (id: ResourceId) -> ();
+  getAnalyticsSummary: () -> (AnalyticsSummary) query;
+  getCallerUserProfile: () -> (opt UserProfile) query;
+  getCallerUserRole: () -> (UserRole__1) query;
+  getDonationSessionStatus: (sessionId: text) -> (StripeSessionStatus);
+  getEvent: (id: ResourceId) -> (opt Event) query;
+  getEventWithRsvps: (id: ResourceId) -> (opt EventWithRsvps) query;
+  getSettings: () -> (SystemSettings) query;
+  getStripeSessionStatus: (sessionId: text) -> (StripeSessionStatus);
+  getUserProfile: (userId: UserId) -> (opt UserProfile) query;
+  isCallerAdmin: () -> (bool) query;
+  isStripeConfigured: () -> (bool) query;
+  listAlbums: () -> (vec GalleryAlbum) query;
+  listAnnouncements: () -> (vec Announcement) query;
+  listBlogPosts: () -> (vec BlogPost) query;
+  listContacts: () -> (vec ContactMessage) query;
+  listDevotionals: () -> (vec Devotional) query;
+  listDonations: () -> (vec Donation) query;
+  listEvents: () -> (vec Event) query;
+  listGalleryImages: (albumId: ResourceId) -> (vec GalleryImage) query;
+  listLeadership: () -> (vec LeadershipMember) query;
+  listMedia: () -> (vec MediaFile) query;
+  listMediaByType: (mediaType: MediaType) -> (vec MediaFile) query;
+  listPendingRegistrations: () -> (vec UserProfile) query;
+  listPrayerRequests: () -> (vec PrayerRequest) query;
+  listSermons: () -> (vec Sermon) query;
+  listSubscribers: () -> (vec NewsletterSubscriber) query;
+  listTestimonials: () -> (vec Testimonial) query;
+  listUsers: () -> (vec UserProfile) query;
+  markContactRead: (id: ResourceId) -> ();
+  recordDonation: (donorName: text, donorEmail: text, amountCents: nat,
+   currency: text, message: opt text, stripeSessionId: opt text) ->
+   (Donation);
+  recordPageView: (page: text) -> ();
+  registerUser: (name: text, email: text, phone: opt text) -> (UserProfile);
+  rejectUser: (userId: UserId) -> ();
+  saveCallerUserProfile: (name: text, email: text, phone: opt text) -> ();
+  setStripeConfiguration: (config: StripeConfiguration) -> ();
+  submitContact: (name: text, email: text, subject: text, message: text) ->
+   (ContactMessage);
+  submitPrayerRequest: (submitterName: text, content: text, privacy:
+   PrayerPrivacy) -> (PrayerRequest);
+  submitRsvp: (eventId: ResourceId, status: RsvpStatus) -> ();
+  submitTestimonial: (authorName: text, content: text, photoBlob:
+   opt ExternalBlob) -> (Testimonial);
+  subscribeNewsletter: (email: text) -> ();
+  totalDonationsCents: () -> (nat) query;
+  transform: (input: TransformationInput) -> (TransformationOutput) query;
+  unsubscribeNewsletter: (email: text) -> ();
+  updateAnnouncement: (id: ResourceId, title: text, content: text, isPinned:
+   bool, publishAt: Timestamp, expireAt: opt Timestamp) -> (Announcement);
+  updateBlogPost: (id: ResourceId, title: text, content: text,
+   featuredImageBlob: opt ExternalBlob, isPublished: bool) -> (BlogPost);
+  updateDevotional: (id: ResourceId, title: text, scripture: text,
+   reflection: text, date: Timestamp) -> (Devotional);
+  updateEvent: (id: ResourceId, title: text, description: text, location:
+   text, startDate: Timestamp, endDate: Timestamp, capacity: opt nat,
+   imageUrl: opt text, isPublished: bool) -> (Event);
+  updateLeader: (id: ResourceId, name: text, title: text, bio: text,
+   photoBlob: opt ExternalBlob, displayOrder: nat, isActive: bool) ->
+   (LeadershipMember);
+  updatePrayerStatus: (id: ResourceId, status: PrayerStatus) -> ();
+  updateSermon: (id: ResourceId, title: text, speaker: text, date: Timestamp,
+   description: text, scriptureReference: text, audioBlob: opt ExternalBlob,
+   videoBlob: opt ExternalBlob, thumbnailBlob: opt ExternalBlob, isPublished:
+   bool) -> (Sermon);
+  updateSettings: (updated: SystemSettings) -> ();
+  uploadMedia: (fileName: text, "blob": ExternalBlob, mediaType: MediaType,
+   category: text, description: opt text) -> (MediaFile);
+}
